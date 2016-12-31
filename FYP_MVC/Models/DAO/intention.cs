@@ -15,7 +15,7 @@ namespace FYP_MVC.Models.DAO
     public partial class intention
     {
         public int ID { get; set; }
-        public Nullable<int> cahrtID { get; set; }
+        public Nullable<int> chartID { get; set; }
         public string intention1 { get; set; }
     
         public virtual chart chart { get; set; }

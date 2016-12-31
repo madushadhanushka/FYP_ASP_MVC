@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="FYPModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="FYPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="chart">
     <Key>
       <PropertyRef Name="ID" />
@@ -8,7 +8,7 @@
     <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="chartDimensions" Relationship="Self.FK__chartDime__cahrt__5441852A" FromRole="chart" ToRole="chartDimension" />
     <NavigationProperty Name="dimensionCounts" Relationship="Self.FK__dimension__cahrt__4F7CD00D" FromRole="chart" ToRole="dimensionCount" />
-    <NavigationProperty Name="feedBacks" Relationship="Self.FK__feedBack__chartI__5FB337D6" FromRole="chart" ToRole="feedBack" />
+    <NavigationProperty Name="feedBacks" Relationship="Self.FK__feedBack__chartI__628FA481" FromRole="chart" ToRole="feedBack" />
     <NavigationProperty Name="intentions" Relationship="Self.FK__intention__cahrt__4AB81AF0" FromRole="chart" ToRole="intention" />
   </EntityType>
   <EntityType Name="chartDimension">
@@ -16,7 +16,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cahrtID" Type="Int32" />
+    <Property Name="chartID" Type="Int32" />
     <Property Name="dimensionIndex" Type="Int32" />
     <Property Name="isContinuous" Type="Int32" />
     <NavigationProperty Name="chart" Relationship="Self.FK__chartDime__cahrt__5441852A" FromRole="chartDimension" ToRole="chart" />
@@ -29,7 +29,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="dimensionID" Type="Int32" />
-    <Property Name="cardinality" Type="Int32" />
+    <Property Name="cardinality" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="chartDimension" Relationship="Self.FK__chartDime__dimen__59063A47" FromRole="chartDimensionCardinality" ToRole="chartDimension" />
   </EntityType>
   <EntityType Name="column">
@@ -59,7 +59,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cahrtID" Type="Int32" />
+    <Property Name="chartID" Type="Int32" />
     <Property Name="count" Type="Int32" />
     <NavigationProperty Name="chart" Relationship="Self.FK__dimension__cahrt__4F7CD00D" FromRole="dimensionCount" ToRole="chart" />
   </EntityType>
@@ -68,7 +68,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cahrtID" Type="Int32" />
+    <Property Name="chartID" Type="Int32" />
     <Property Name="intention1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="chart" Relationship="Self.FK__intention__cahrt__4AB81AF0" FromRole="intention" ToRole="chart" />
   </EntityType>
@@ -92,7 +92,7 @@
     <Property Name="numOfRows" Type="Int32" />
     <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="columns" Relationship="Self.FK__column__tableID__3D5E1FD2" FromRole="table" ToRole="column" />
-    <NavigationProperty Name="feedBacks" Relationship="Self.FK__feedBack__tableI__60A75C0F" FromRole="table" ToRole="feedBack" />
+    <NavigationProperty Name="feedBacks" Relationship="Self.FK__feedBack__tableI__6383C8BA" FromRole="table" ToRole="feedBack" />
     <NavigationProperty Name="visualizedDataFile" Relationship="Self.FK__table__fileID__38996AB5" FromRole="table" ToRole="visualizedDataFile" />
     <NavigationProperty Name="tableDimensions" Relationship="Self.FK__tableDime__table__4222D4EF" FromRole="table" ToRole="tableDimension" />
   </EntityType>
@@ -154,10 +154,16 @@
     <Property Name="dim5_IsContinuous" Type="Int32" />
     <Property Name="dim5_Cardinality" Type="Int32" />
     <Property Name="dim5_context" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="dim6_IsContinuous" Type="Int32" />
+    <Property Name="dim6_Cardinality" Type="Int32" />
+    <Property Name="dim6_context" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="dim7_IsContinuous" Type="Int32" />
+    <Property Name="dim7_Cardinality" Type="Int32" />
+    <Property Name="dim7_context" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="recommendation" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="rating" Type="Int32" />
-    <NavigationProperty Name="chart" Relationship="Self.FK__feedBack__chartI__5FB337D6" FromRole="feedBack" ToRole="chart" />
-    <NavigationProperty Name="table" Relationship="Self.FK__feedBack__tableI__60A75C0F" FromRole="feedBack" ToRole="table" />
+    <NavigationProperty Name="chart" Relationship="Self.FK__feedBack__chartI__628FA481" FromRole="feedBack" ToRole="chart" />
+    <NavigationProperty Name="table" Relationship="Self.FK__feedBack__tableI__6383C8BA" FromRole="feedBack" ToRole="table" />
   </EntityType>
   <EntityType Name="userFeedBack">
     <Key>
@@ -185,6 +191,19 @@
     <Property Name="recommendation" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="score" Type="Double" />
   </EntityType>
+  <EntityType Name="chartRuleBase_View">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="count" Type="Int32" />
+    <Property Name="dimensionIndex" Type="Int32" />
+    <Property Name="isContinuous" Type="Int32" />
+    <Property Name="context" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="cardinality" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="intention" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
   <Association Name="FK__chartDime__cahrt__5441852A">
     <End Role="chart" Type="Self.chart" Multiplicity="0..1" />
     <End Role="chartDimension" Type="Self.chartDimension" Multiplicity="*" />
@@ -193,7 +212,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="chartDimension">
-        <PropertyRef Name="cahrtID" />
+        <PropertyRef Name="chartID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -205,11 +224,11 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="dimensionCount">
-        <PropertyRef Name="cahrtID" />
+        <PropertyRef Name="chartID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__feedBack__chartI__5FB337D6">
+  <Association Name="FK__feedBack__chartI__628FA481">
     <End Role="chart" Type="Self.chart" Multiplicity="0..1" />
     <End Role="feedBack" Type="Self.feedBack" Multiplicity="*" />
     <ReferentialConstraint>
@@ -229,7 +248,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="intention">
-        <PropertyRef Name="cahrtID" />
+        <PropertyRef Name="chartID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -293,7 +312,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__feedBack__tableI__60A75C0F">
+  <Association Name="FK__feedBack__tableI__6383C8BA">
     <End Role="table" Type="Self.table" Multiplicity="0..1" />
     <End Role="feedBack" Type="Self.feedBack" Multiplicity="*" />
     <ReferentialConstraint>
@@ -344,6 +363,7 @@
     <EntitySet Name="visualizedDataFiles" EntityType="Self.visualizedDataFile" />
     <EntitySet Name="feedBacks" EntityType="Self.feedBack" />
     <EntitySet Name="userFeedBacks" EntityType="Self.userFeedBack" />
+    <EntitySet Name="chartRuleBase_View" EntityType="Self.chartRuleBase_View" />
     <AssociationSet Name="FK__chartDime__cahrt__5441852A" Association="Self.FK__chartDime__cahrt__5441852A">
       <End Role="chart" EntitySet="charts" />
       <End Role="chartDimension" EntitySet="chartDimensions" />
@@ -352,7 +372,7 @@
       <End Role="chart" EntitySet="charts" />
       <End Role="dimensionCount" EntitySet="dimensionCounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__feedBack__chartI__5FB337D6" Association="Self.FK__feedBack__chartI__5FB337D6">
+    <AssociationSet Name="FK__feedBack__chartI__628FA481" Association="Self.FK__feedBack__chartI__628FA481">
       <End Role="chart" EntitySet="charts" />
       <End Role="feedBack" EntitySet="feedBacks" />
     </AssociationSet>
@@ -380,7 +400,7 @@
       <End Role="originalDataFile" EntitySet="originalDataFiles" />
       <End Role="visualizedDataFile" EntitySet="visualizedDataFiles" />
     </AssociationSet>
-    <AssociationSet Name="FK__feedBack__tableI__60A75C0F" Association="Self.FK__feedBack__tableI__60A75C0F">
+    <AssociationSet Name="FK__feedBack__tableI__6383C8BA" Association="Self.FK__feedBack__tableI__6383C8BA">
       <End Role="table" EntitySet="tables" />
       <End Role="feedBack" EntitySet="feedBacks" />
     </AssociationSet>
@@ -392,20 +412,27 @@
       <End Role="table" EntitySet="tables" />
       <End Role="tableDimension" EntitySet="tableDimensions" />
     </AssociationSet>
-    <FunctionImport Name="calculateCosineScore">
-      <Parameter Name="dim1_numOfDim" Mode="In" Type="Int32" />
+    <FunctionImport Name="calculateCosineScore_DimCount_2">
+      <Parameter Name="tableID" Mode="In" Type="Int32" />
       <Parameter Name="intention" Mode="In" Type="String" />
-      <Parameter Name="dim1_IsContinuous" Mode="In" Type="Int32" />
-      <Parameter Name="dim1_Cardinality" Mode="In" Type="Int32" />
-      <Parameter Name="dim1_context" Mode="In" Type="String" />
-      <Parameter Name="dim2_IsContinuous" Mode="In" Type="Int32" />
-      <Parameter Name="dim2_Cardinality" Mode="In" Type="Int32" />
-      <Parameter Name="dim2_context" Mode="In" Type="String" />
-      <Parameter Name="dim3_IsContinuous" Mode="In" Type="Int32" />
-      <Parameter Name="dim3_Cardinality" Mode="In" Type="Int32" />
-      <Parameter Name="dim3_context" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="calculateCosineScore2">
+    <FunctionImport Name="calculateCosineScore_DimCount_3">
+      <Parameter Name="tableID" Mode="In" Type="Int32" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateCosineScore_DimCount_4">
+      <Parameter Name="tableID" Mode="In" Type="Int32" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateCosineScore_DimCount_5">
+      <Parameter Name="tableID" Mode="In" Type="Int32" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateCosineScore_DimCount3Version4">
+      <Parameter Name="tableID" Mode="In" Type="Int32" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateCosineScoreVersion3">
       <Parameter Name="numOfDim" Mode="In" Type="Int32" />
       <Parameter Name="intention" Mode="In" Type="String" />
       <Parameter Name="dim1_IsContinuous" Mode="In" Type="Int32" />
@@ -417,6 +444,198 @@
       <Parameter Name="dim3_IsContinuous" Mode="In" Type="Int32" />
       <Parameter Name="dim3_Cardinality" Mode="In" Type="Int32" />
       <Parameter Name="dim3_context" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateScoreOfPermutum_DimCount_2">
+      <Parameter Name="result" Mode="InOut" Type="Double" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+      <Parameter Name="dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_context" Mode="In" Type="String" />
+      <Parameter Name="dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_intention" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_context" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateScoreOfPermutum_DimCount_3">
+      <Parameter Name="result" Mode="InOut" Type="Double" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+      <Parameter Name="dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_context" Mode="In" Type="String" />
+      <Parameter Name="dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_context" Mode="In" Type="String" />
+      <Parameter Name="dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_intention" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_context" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateScoreOfPermutum_DimCount_4">
+      <Parameter Name="result" Mode="InOut" Type="Double" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+      <Parameter Name="dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_context" Mode="In" Type="String" />
+      <Parameter Name="dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_context" Mode="In" Type="String" />
+      <Parameter Name="dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_context" Mode="In" Type="String" />
+      <Parameter Name="dim4_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim4_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim4_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_intention" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim4_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim4_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim4_context" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateScoreOfPermutum_DimCount_5">
+      <Parameter Name="result" Mode="InOut" Type="Double" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+      <Parameter Name="dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_context" Mode="In" Type="String" />
+      <Parameter Name="dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_context" Mode="In" Type="String" />
+      <Parameter Name="dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_context" Mode="In" Type="String" />
+      <Parameter Name="dim4_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim4_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim4_context" Mode="In" Type="String" />
+      <Parameter Name="dim5_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim5_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim5_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_intention" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim4_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim4_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim4_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim5_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim5_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim5_context" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateScoreOfPermutum_DimCount_6">
+      <Parameter Name="result" Mode="InOut" Type="Double" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+      <Parameter Name="dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_context" Mode="In" Type="String" />
+      <Parameter Name="dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_context" Mode="In" Type="String" />
+      <Parameter Name="dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_context" Mode="In" Type="String" />
+      <Parameter Name="dim4_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim4_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim4_context" Mode="In" Type="String" />
+      <Parameter Name="dim5_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim5_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim5_context" Mode="In" Type="String" />
+      <Parameter Name="dim6_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim6_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim6_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_intention" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim4_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim4_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim4_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim5_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim5_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim5_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim6_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim6_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim6_context" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="calculateScoreOfPermutum_DimCount_7">
+      <Parameter Name="result" Mode="InOut" Type="Double" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+      <Parameter Name="dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim1_context" Mode="In" Type="String" />
+      <Parameter Name="dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim2_context" Mode="In" Type="String" />
+      <Parameter Name="dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim3_context" Mode="In" Type="String" />
+      <Parameter Name="dim4_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim4_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim4_context" Mode="In" Type="String" />
+      <Parameter Name="dim5_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim5_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim5_context" Mode="In" Type="String" />
+      <Parameter Name="dim6_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim6_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim6_context" Mode="In" Type="String" />
+      <Parameter Name="dim7_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="dim7_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="dim7_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_intention" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim1_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim1_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim2_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim2_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim3_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim3_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim4_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim4_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim4_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim5_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim5_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim5_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim6_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim6_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim6_context" Mode="In" Type="String" />
+      <Parameter Name="Curr_dim7_IsContinuous" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim7_Cardinality" Mode="In" Type="Int32" />
+      <Parameter Name="Curr_dim7_context" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="calculateScoreOfPermutumVersion2">
       <Parameter Name="result" Mode="InOut" Type="Double" />
@@ -441,22 +660,9 @@
       <Parameter Name="Curr_dim3_Cardinality" Mode="In" Type="Int32" />
       <Parameter Name="Curr_dim3_context" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="readResults" ReturnType="Collection(FYPModel1.readResults_Result)" />
+    <FunctionImport Name="getRecommendationFromRules">
+      <Parameter Name="tableID" Mode="In" Type="Int32" />
+      <Parameter Name="intention" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
-  <ComplexType Name="readResults_Result">
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="intention" Nullable="true" MaxLength="30" />
-    <Property Type="Int32" Name="dim1_IsContinuous" Nullable="true" />
-    <Property Type="Int32" Name="dim1_Cardinality" Nullable="true" />
-    <Property Type="String" Name="dim1_context" Nullable="true" MaxLength="30" />
-    <Property Type="Int32" Name="dim2_IsContinuous" Nullable="true" />
-    <Property Type="Int32" Name="dim2_Cardinality" Nullable="true" />
-    <Property Type="String" Name="dim2_context" Nullable="true" MaxLength="30" />
-    <Property Type="Int32" Name="dim3_IsContinuous" Nullable="true" />
-    <Property Type="Int32" Name="dim3_Cardinality" Nullable="true" />
-    <Property Type="String" Name="dim3_context" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="recommendation" Nullable="true" MaxLength="30" />
-    <Property Type="Double" Name="score" Nullable="true" />
-  </ComplexType>
 </Schema>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="FYPModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="FYPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="chart">
     <Key>
       <PropertyRef Name="ID" />
@@ -12,7 +12,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="cahrtID" Type="int" />
+    <Property Name="chartID" Type="int" />
     <Property Name="dimensionIndex" Type="int" />
     <Property Name="isContinuous" Type="int" />
   </EntityType>
@@ -22,7 +22,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dimensionID" Type="int" />
-    <Property Name="cardinality" Type="int" />
+    <Property Name="cardinality" Type="nvarchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="column">
     <Key>
@@ -49,7 +49,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="cahrtID" Type="int" />
+    <Property Name="chartID" Type="int" />
     <Property Name="count" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -78,6 +78,12 @@ warning 6002: The table/view 'FYP.dbo.feedBack' does not have a primary key defi
     <Property Name="dim5_IsContinuous" Type="int" />
     <Property Name="dim5_Cardinality" Type="int" />
     <Property Name="dim5_context" Type="nvarchar" MaxLength="30" />
+    <Property Name="dim6_IsContinuous" Type="int" />
+    <Property Name="dim6_Cardinality" Type="int" />
+    <Property Name="dim6_context" Type="nvarchar" MaxLength="30" />
+    <Property Name="dim7_IsContinuous" Type="int" />
+    <Property Name="dim7_Cardinality" Type="int" />
+    <Property Name="dim7_context" Type="nvarchar" MaxLength="30" />
     <Property Name="recommendation" Type="nvarchar" MaxLength="30" />
     <Property Name="rating" Type="int" />
   </EntityType>
@@ -86,7 +92,7 @@ warning 6002: The table/view 'FYP.dbo.feedBack' does not have a primary key defi
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="cahrtID" Type="int" />
+    <Property Name="chartID" Type="int" />
     <Property Name="intention" Type="nvarchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="originalDataFile">
@@ -165,6 +171,21 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
     <Property Name="fileLocation" Type="nvarchar" MaxLength="100" />
     <Property Name="date" Type="datetime" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FYP.dbo.chartRuleBase_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="chartRuleBase_View">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="60" />
+    <Property Name="count" Type="int" />
+    <Property Name="dimensionIndex" Type="int" />
+    <Property Name="isContinuous" Type="int" />
+    <Property Name="context" Type="nvarchar" MaxLength="30" />
+    <Property Name="cardinality" Type="nvarchar" MaxLength="30" />
+    <Property Name="intention" Type="nvarchar" MaxLength="30" />
+  </EntityType>
   <Association Name="FK__chartDime__cahrt__5441852A">
     <End Role="chart" Type="Self.chart" Multiplicity="0..1" />
     <End Role="chartDimension" Type="Self.chartDimension" Multiplicity="*" />
@@ -173,7 +194,7 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="chartDimension">
-        <PropertyRef Name="cahrtID" />
+        <PropertyRef Name="chartID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -209,7 +230,7 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="dimensionCount">
-        <PropertyRef Name="cahrtID" />
+        <PropertyRef Name="chartID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -225,7 +246,7 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__feedBack__chartI__5FB337D6">
+  <Association Name="FK__feedBack__chartI__628FA481">
     <End Role="chart" Type="Self.chart" Multiplicity="0..1" />
     <End Role="feedBack" Type="Self.feedBack" Multiplicity="*" />
     <ReferentialConstraint>
@@ -237,7 +258,7 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__feedBack__tableI__60A75C0F">
+  <Association Name="FK__feedBack__tableI__6383C8BA">
     <End Role="table" Type="Self.table" Multiplicity="0..1" />
     <End Role="feedBack" Type="Self.feedBack" Multiplicity="*" />
     <ReferentialConstraint>
@@ -257,7 +278,7 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="intention">
-        <PropertyRef Name="cahrtID" />
+        <PropertyRef Name="chartID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -309,20 +330,27 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="calculateCosineScore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="dim1_numOfDim" Type="int" Mode="In" />
+  <Function Name="calculateCosineScore_DimCount_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableID" Type="int" Mode="In" />
     <Parameter Name="intention" Type="nvarchar" Mode="In" />
-    <Parameter Name="dim1_IsContinuous" Type="int" Mode="In" />
-    <Parameter Name="dim1_Cardinality" Type="int" Mode="In" />
-    <Parameter Name="dim1_context" Type="nvarchar" Mode="In" />
-    <Parameter Name="dim2_IsContinuous" Type="int" Mode="In" />
-    <Parameter Name="dim2_Cardinality" Type="int" Mode="In" />
-    <Parameter Name="dim2_context" Type="nvarchar" Mode="In" />
-    <Parameter Name="dim3_IsContinuous" Type="int" Mode="In" />
-    <Parameter Name="dim3_Cardinality" Type="int" Mode="In" />
-    <Parameter Name="dim3_context" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="calculateCosineScore2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+  <Function Name="calculateCosineScore_DimCount_3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableID" Type="int" Mode="In" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateCosineScore_DimCount_4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableID" Type="int" Mode="In" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateCosineScore_DimCount_5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableID" Type="int" Mode="In" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateCosineScore_DimCount3Version4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableID" Type="int" Mode="In" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateCosineScoreVersion3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="numOfDim" Type="int" Mode="In" />
     <Parameter Name="intention" Type="nvarchar" Mode="In" />
     <Parameter Name="dim1_IsContinuous" Type="int" Mode="In" />
@@ -334,6 +362,198 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
     <Parameter Name="dim3_IsContinuous" Type="int" Mode="In" />
     <Parameter Name="dim3_Cardinality" Type="int" Mode="In" />
     <Parameter Name="dim3_context" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateScoreOfPermutum_DimCount_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="result" Type="float" Mode="InOut" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_context" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateScoreOfPermutum_DimCount_3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="result" Type="float" Mode="InOut" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim3_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_context" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateScoreOfPermutum_DimCount_4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="result" Type="float" Mode="InOut" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim3_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim4_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim4_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim4_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim4_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim4_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim4_context" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateScoreOfPermutum_DimCount_5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="result" Type="float" Mode="InOut" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim3_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim4_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim4_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim4_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim5_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim5_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim5_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim4_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim4_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim4_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim5_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim5_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim5_context" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateScoreOfPermutum_DimCount_6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="result" Type="float" Mode="InOut" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim3_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim4_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim4_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim4_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim5_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim5_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim5_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim6_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim6_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim6_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim4_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim4_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim4_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim5_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim5_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim5_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim6_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim6_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim6_context" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="calculateScoreOfPermutum_DimCount_7" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="result" Type="float" Mode="InOut" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim3_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim4_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim4_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim4_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim5_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim5_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim5_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim6_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim6_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim6_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="dim7_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="dim7_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="dim7_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_intention" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim1_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim1_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim2_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim2_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim3_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim3_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim4_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim4_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim4_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim5_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim5_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim5_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim6_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim6_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim6_context" Type="nvarchar" Mode="In" />
+    <Parameter Name="Curr_dim7_IsContinuous" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim7_Cardinality" Type="int" Mode="In" />
+    <Parameter Name="Curr_dim7_context" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="calculateScoreOfPermutumVersion2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="result" Type="float" Mode="InOut" />
@@ -358,8 +578,11 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
     <Parameter Name="Curr_dim3_Cardinality" Type="int" Mode="In" />
     <Parameter Name="Curr_dim3_context" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="readResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <EntityContainer Name="FYPModel1StoreContainer">
+  <Function Name="getRecommendationFromRules" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableID" Type="int" Mode="In" />
+    <Parameter Name="intention" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="FYPModelStoreContainer">
     <EntitySet Name="chart" EntityType="Self.chart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="chartDimension" EntityType="Self.chartDimension" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="chartDimensionCardinality" EntityType="Self.chartDimensionCardinality" Schema="dbo" store:Type="Tables" />
@@ -394,6 +617,12 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
     [feedBack].[dim5_IsContinuous] AS [dim5_IsContinuous], 
     [feedBack].[dim5_Cardinality] AS [dim5_Cardinality], 
     [feedBack].[dim5_context] AS [dim5_context], 
+    [feedBack].[dim6_IsContinuous] AS [dim6_IsContinuous], 
+    [feedBack].[dim6_Cardinality] AS [dim6_Cardinality], 
+    [feedBack].[dim6_context] AS [dim6_context], 
+    [feedBack].[dim7_IsContinuous] AS [dim7_IsContinuous], 
+    [feedBack].[dim7_Cardinality] AS [dim7_Cardinality], 
+    [feedBack].[dim7_context] AS [dim7_context], 
     [feedBack].[recommendation] AS [recommendation], 
     [feedBack].[rating] AS [rating]
     FROM [dbo].[feedBack] AS [feedBack]</DefiningQuery>
@@ -423,6 +652,18 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
     [userFeedBack].[score] AS [score]
     FROM [dbo].[userFeedBack] AS [userFeedBack]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="chartRuleBase_View" EntityType="Self.chartRuleBase_View" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [chartRuleBase_View].[ID] AS [ID], 
+    [chartRuleBase_View].[name] AS [name], 
+    [chartRuleBase_View].[count] AS [count], 
+    [chartRuleBase_View].[dimensionIndex] AS [dimensionIndex], 
+    [chartRuleBase_View].[isContinuous] AS [isContinuous], 
+    [chartRuleBase_View].[context] AS [context], 
+    [chartRuleBase_View].[cardinality] AS [cardinality], 
+    [chartRuleBase_View].[intention] AS [intention]
+    FROM [dbo].[chartRuleBase_View] AS [chartRuleBase_View]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK__chartDime__cahrt__5441852A" Association="Self.FK__chartDime__cahrt__5441852A">
       <End Role="chart" EntitySet="chart" />
       <End Role="chartDimension" EntitySet="chartDimension" />
@@ -443,11 +684,11 @@ warning 6002: The table/view 'FYP.dbo.userFeedBack' does not have a primary key 
       <End Role="chartDimension" EntitySet="chartDimension" />
       <End Role="dimensionContext" EntitySet="dimensionContext" />
     </AssociationSet>
-    <AssociationSet Name="FK__feedBack__chartI__5FB337D6" Association="Self.FK__feedBack__chartI__5FB337D6">
+    <AssociationSet Name="FK__feedBack__chartI__628FA481" Association="Self.FK__feedBack__chartI__628FA481">
       <End Role="chart" EntitySet="chart" />
       <End Role="feedBack" EntitySet="feedBack" />
     </AssociationSet>
-    <AssociationSet Name="FK__feedBack__tableI__60A75C0F" Association="Self.FK__feedBack__tableI__60A75C0F">
+    <AssociationSet Name="FK__feedBack__tableI__6383C8BA" Association="Self.FK__feedBack__tableI__6383C8BA">
       <End Role="table" EntitySet="table" />
       <End Role="feedBack" EntitySet="feedBack" />
     </AssociationSet>

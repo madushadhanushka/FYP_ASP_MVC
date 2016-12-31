@@ -16,7 +16,7 @@ namespace FYP_MVC.Models.DAO
     {
         public int ID { get; set; }
         public Nullable<int> dimensionID { get; set; }
-        public Nullable<int> cardinality { get; set; }
+        public string cardinality { get; set; }
     
         public virtual chartDimension chartDimension { get; set; }
     }

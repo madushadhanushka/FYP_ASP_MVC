@@ -186,6 +186,9 @@
     <Compile Include="Models\DAO\chartDimensionCardinality.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAO\chartRuleBase_View.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DAO\charts.cs" />
     <Compile Include="Models\DAO\column.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
@@ -218,9 +221,6 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAO\originalDataFile.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAO\readResults_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAO\table.cs">

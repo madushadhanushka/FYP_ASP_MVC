@@ -41,57 +41,74 @@ namespace FYP_MVC.Models.DAO
         public virtual DbSet<visualizedDataFile> visualizedDataFiles { get; set; }
         public virtual DbSet<feedBack> feedBacks { get; set; }
         public virtual DbSet<userFeedBack> userFeedBacks { get; set; }
+        public virtual DbSet<chartRuleBase_View> chartRuleBase_View { get; set; }
     
-        public virtual int calculateCosineScore(Nullable<int> dim1_numOfDim, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, Nullable<int> dim3_IsContinuous, Nullable<int> dim3_Cardinality, string dim3_context)
+        public virtual int calculateCosineScore_DimCount_2(Nullable<int> tableID, string intention)
         {
-            var dim1_numOfDimParameter = dim1_numOfDim.HasValue ?
-                new ObjectParameter("dim1_numOfDim", dim1_numOfDim) :
-                new ObjectParameter("dim1_numOfDim", typeof(int));
+            var tableIDParameter = tableID.HasValue ?
+                new ObjectParameter("tableID", tableID) :
+                new ObjectParameter("tableID", typeof(int));
     
             var intentionParameter = intention != null ?
                 new ObjectParameter("intention", intention) :
                 new ObjectParameter("intention", typeof(string));
     
-            var dim1_IsContinuousParameter = dim1_IsContinuous.HasValue ?
-                new ObjectParameter("dim1_IsContinuous", dim1_IsContinuous) :
-                new ObjectParameter("dim1_IsContinuous", typeof(int));
-    
-            var dim1_CardinalityParameter = dim1_Cardinality.HasValue ?
-                new ObjectParameter("dim1_Cardinality", dim1_Cardinality) :
-                new ObjectParameter("dim1_Cardinality", typeof(int));
-    
-            var dim1_contextParameter = dim1_context != null ?
-                new ObjectParameter("dim1_context", dim1_context) :
-                new ObjectParameter("dim1_context", typeof(string));
-    
-            var dim2_IsContinuousParameter = dim2_IsContinuous.HasValue ?
-                new ObjectParameter("dim2_IsContinuous", dim2_IsContinuous) :
-                new ObjectParameter("dim2_IsContinuous", typeof(int));
-    
-            var dim2_CardinalityParameter = dim2_Cardinality.HasValue ?
-                new ObjectParameter("dim2_Cardinality", dim2_Cardinality) :
-                new ObjectParameter("dim2_Cardinality", typeof(int));
-    
-            var dim2_contextParameter = dim2_context != null ?
-                new ObjectParameter("dim2_context", dim2_context) :
-                new ObjectParameter("dim2_context", typeof(string));
-    
-            var dim3_IsContinuousParameter = dim3_IsContinuous.HasValue ?
-                new ObjectParameter("dim3_IsContinuous", dim3_IsContinuous) :
-                new ObjectParameter("dim3_IsContinuous", typeof(int));
-    
-            var dim3_CardinalityParameter = dim3_Cardinality.HasValue ?
-                new ObjectParameter("dim3_Cardinality", dim3_Cardinality) :
-                new ObjectParameter("dim3_Cardinality", typeof(int));
-    
-            var dim3_contextParameter = dim3_context != null ?
-                new ObjectParameter("dim3_context", dim3_context) :
-                new ObjectParameter("dim3_context", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateCosineScore", dim1_numOfDimParameter, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, dim3_IsContinuousParameter, dim3_CardinalityParameter, dim3_contextParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateCosineScore_DimCount_2", tableIDParameter, intentionParameter);
         }
     
-        public virtual int calculateCosineScore2(Nullable<int> numOfDim, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, Nullable<int> dim3_IsContinuous, Nullable<int> dim3_Cardinality, string dim3_context)
+        public virtual int calculateCosineScore_DimCount_3(Nullable<int> tableID, string intention)
+        {
+            var tableIDParameter = tableID.HasValue ?
+                new ObjectParameter("tableID", tableID) :
+                new ObjectParameter("tableID", typeof(int));
+    
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateCosineScore_DimCount_3", tableIDParameter, intentionParameter);
+        }
+    
+        public virtual int calculateCosineScore_DimCount_4(Nullable<int> tableID, string intention)
+        {
+            var tableIDParameter = tableID.HasValue ?
+                new ObjectParameter("tableID", tableID) :
+                new ObjectParameter("tableID", typeof(int));
+    
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateCosineScore_DimCount_4", tableIDParameter, intentionParameter);
+        }
+    
+        public virtual int calculateCosineScore_DimCount_5(Nullable<int> tableID, string intention)
+        {
+            var tableIDParameter = tableID.HasValue ?
+                new ObjectParameter("tableID", tableID) :
+                new ObjectParameter("tableID", typeof(int));
+    
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateCosineScore_DimCount_5", tableIDParameter, intentionParameter);
+        }
+    
+        public virtual int calculateCosineScore_DimCount3Version4(Nullable<int> tableID, string intention)
+        {
+            var tableIDParameter = tableID.HasValue ?
+                new ObjectParameter("tableID", tableID) :
+                new ObjectParameter("tableID", typeof(int));
+    
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateCosineScore_DimCount3Version4", tableIDParameter, intentionParameter);
+        }
+    
+        public virtual int calculateCosineScoreVersion3(Nullable<int> numOfDim, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, Nullable<int> dim3_IsContinuous, Nullable<int> dim3_Cardinality, string dim3_context)
         {
             var numOfDimParameter = numOfDim.HasValue ?
                 new ObjectParameter("numOfDim", numOfDim) :
@@ -137,7 +154,733 @@ namespace FYP_MVC.Models.DAO
                 new ObjectParameter("dim3_context", dim3_context) :
                 new ObjectParameter("dim3_context", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateCosineScore2", numOfDimParameter, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, dim3_IsContinuousParameter, dim3_CardinalityParameter, dim3_contextParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateCosineScoreVersion3", numOfDimParameter, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, dim3_IsContinuousParameter, dim3_CardinalityParameter, dim3_contextParameter);
+        }
+    
+        public virtual int calculateScoreOfPermutum_DimCount_2(ObjectParameter result, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, string curr_intention, Nullable<int> curr_dim1_IsContinuous, Nullable<int> curr_dim1_Cardinality, string curr_dim1_context, Nullable<int> curr_dim2_IsContinuous, Nullable<int> curr_dim2_Cardinality, string curr_dim2_context)
+        {
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            var dim1_IsContinuousParameter = dim1_IsContinuous.HasValue ?
+                new ObjectParameter("dim1_IsContinuous", dim1_IsContinuous) :
+                new ObjectParameter("dim1_IsContinuous", typeof(int));
+    
+            var dim1_CardinalityParameter = dim1_Cardinality.HasValue ?
+                new ObjectParameter("dim1_Cardinality", dim1_Cardinality) :
+                new ObjectParameter("dim1_Cardinality", typeof(int));
+    
+            var dim1_contextParameter = dim1_context != null ?
+                new ObjectParameter("dim1_context", dim1_context) :
+                new ObjectParameter("dim1_context", typeof(string));
+    
+            var dim2_IsContinuousParameter = dim2_IsContinuous.HasValue ?
+                new ObjectParameter("dim2_IsContinuous", dim2_IsContinuous) :
+                new ObjectParameter("dim2_IsContinuous", typeof(int));
+    
+            var dim2_CardinalityParameter = dim2_Cardinality.HasValue ?
+                new ObjectParameter("dim2_Cardinality", dim2_Cardinality) :
+                new ObjectParameter("dim2_Cardinality", typeof(int));
+    
+            var dim2_contextParameter = dim2_context != null ?
+                new ObjectParameter("dim2_context", dim2_context) :
+                new ObjectParameter("dim2_context", typeof(string));
+    
+            var curr_intentionParameter = curr_intention != null ?
+                new ObjectParameter("Curr_intention", curr_intention) :
+                new ObjectParameter("Curr_intention", typeof(string));
+    
+            var curr_dim1_IsContinuousParameter = curr_dim1_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim1_IsContinuous", curr_dim1_IsContinuous) :
+                new ObjectParameter("Curr_dim1_IsContinuous", typeof(int));
+    
+            var curr_dim1_CardinalityParameter = curr_dim1_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim1_Cardinality", curr_dim1_Cardinality) :
+                new ObjectParameter("Curr_dim1_Cardinality", typeof(int));
+    
+            var curr_dim1_contextParameter = curr_dim1_context != null ?
+                new ObjectParameter("Curr_dim1_context", curr_dim1_context) :
+                new ObjectParameter("Curr_dim1_context", typeof(string));
+    
+            var curr_dim2_IsContinuousParameter = curr_dim2_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim2_IsContinuous", curr_dim2_IsContinuous) :
+                new ObjectParameter("Curr_dim2_IsContinuous", typeof(int));
+    
+            var curr_dim2_CardinalityParameter = curr_dim2_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim2_Cardinality", curr_dim2_Cardinality) :
+                new ObjectParameter("Curr_dim2_Cardinality", typeof(int));
+    
+            var curr_dim2_contextParameter = curr_dim2_context != null ?
+                new ObjectParameter("Curr_dim2_context", curr_dim2_context) :
+                new ObjectParameter("Curr_dim2_context", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateScoreOfPermutum_DimCount_2", result, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, curr_intentionParameter, curr_dim1_IsContinuousParameter, curr_dim1_CardinalityParameter, curr_dim1_contextParameter, curr_dim2_IsContinuousParameter, curr_dim2_CardinalityParameter, curr_dim2_contextParameter);
+        }
+    
+        public virtual int calculateScoreOfPermutum_DimCount_3(ObjectParameter result, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, Nullable<int> dim3_IsContinuous, Nullable<int> dim3_Cardinality, string dim3_context, string curr_intention, Nullable<int> curr_dim1_IsContinuous, Nullable<int> curr_dim1_Cardinality, string curr_dim1_context, Nullable<int> curr_dim2_IsContinuous, Nullable<int> curr_dim2_Cardinality, string curr_dim2_context, Nullable<int> curr_dim3_IsContinuous, Nullable<int> curr_dim3_Cardinality, string curr_dim3_context)
+        {
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            var dim1_IsContinuousParameter = dim1_IsContinuous.HasValue ?
+                new ObjectParameter("dim1_IsContinuous", dim1_IsContinuous) :
+                new ObjectParameter("dim1_IsContinuous", typeof(int));
+    
+            var dim1_CardinalityParameter = dim1_Cardinality.HasValue ?
+                new ObjectParameter("dim1_Cardinality", dim1_Cardinality) :
+                new ObjectParameter("dim1_Cardinality", typeof(int));
+    
+            var dim1_contextParameter = dim1_context != null ?
+                new ObjectParameter("dim1_context", dim1_context) :
+                new ObjectParameter("dim1_context", typeof(string));
+    
+            var dim2_IsContinuousParameter = dim2_IsContinuous.HasValue ?
+                new ObjectParameter("dim2_IsContinuous", dim2_IsContinuous) :
+                new ObjectParameter("dim2_IsContinuous", typeof(int));
+    
+            var dim2_CardinalityParameter = dim2_Cardinality.HasValue ?
+                new ObjectParameter("dim2_Cardinality", dim2_Cardinality) :
+                new ObjectParameter("dim2_Cardinality", typeof(int));
+    
+            var dim2_contextParameter = dim2_context != null ?
+                new ObjectParameter("dim2_context", dim2_context) :
+                new ObjectParameter("dim2_context", typeof(string));
+    
+            var dim3_IsContinuousParameter = dim3_IsContinuous.HasValue ?
+                new ObjectParameter("dim3_IsContinuous", dim3_IsContinuous) :
+                new ObjectParameter("dim3_IsContinuous", typeof(int));
+    
+            var dim3_CardinalityParameter = dim3_Cardinality.HasValue ?
+                new ObjectParameter("dim3_Cardinality", dim3_Cardinality) :
+                new ObjectParameter("dim3_Cardinality", typeof(int));
+    
+            var dim3_contextParameter = dim3_context != null ?
+                new ObjectParameter("dim3_context", dim3_context) :
+                new ObjectParameter("dim3_context", typeof(string));
+    
+            var curr_intentionParameter = curr_intention != null ?
+                new ObjectParameter("Curr_intention", curr_intention) :
+                new ObjectParameter("Curr_intention", typeof(string));
+    
+            var curr_dim1_IsContinuousParameter = curr_dim1_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim1_IsContinuous", curr_dim1_IsContinuous) :
+                new ObjectParameter("Curr_dim1_IsContinuous", typeof(int));
+    
+            var curr_dim1_CardinalityParameter = curr_dim1_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim1_Cardinality", curr_dim1_Cardinality) :
+                new ObjectParameter("Curr_dim1_Cardinality", typeof(int));
+    
+            var curr_dim1_contextParameter = curr_dim1_context != null ?
+                new ObjectParameter("Curr_dim1_context", curr_dim1_context) :
+                new ObjectParameter("Curr_dim1_context", typeof(string));
+    
+            var curr_dim2_IsContinuousParameter = curr_dim2_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim2_IsContinuous", curr_dim2_IsContinuous) :
+                new ObjectParameter("Curr_dim2_IsContinuous", typeof(int));
+    
+            var curr_dim2_CardinalityParameter = curr_dim2_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim2_Cardinality", curr_dim2_Cardinality) :
+                new ObjectParameter("Curr_dim2_Cardinality", typeof(int));
+    
+            var curr_dim2_contextParameter = curr_dim2_context != null ?
+                new ObjectParameter("Curr_dim2_context", curr_dim2_context) :
+                new ObjectParameter("Curr_dim2_context", typeof(string));
+    
+            var curr_dim3_IsContinuousParameter = curr_dim3_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim3_IsContinuous", curr_dim3_IsContinuous) :
+                new ObjectParameter("Curr_dim3_IsContinuous", typeof(int));
+    
+            var curr_dim3_CardinalityParameter = curr_dim3_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim3_Cardinality", curr_dim3_Cardinality) :
+                new ObjectParameter("Curr_dim3_Cardinality", typeof(int));
+    
+            var curr_dim3_contextParameter = curr_dim3_context != null ?
+                new ObjectParameter("Curr_dim3_context", curr_dim3_context) :
+                new ObjectParameter("Curr_dim3_context", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateScoreOfPermutum_DimCount_3", result, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, dim3_IsContinuousParameter, dim3_CardinalityParameter, dim3_contextParameter, curr_intentionParameter, curr_dim1_IsContinuousParameter, curr_dim1_CardinalityParameter, curr_dim1_contextParameter, curr_dim2_IsContinuousParameter, curr_dim2_CardinalityParameter, curr_dim2_contextParameter, curr_dim3_IsContinuousParameter, curr_dim3_CardinalityParameter, curr_dim3_contextParameter);
+        }
+    
+        public virtual int calculateScoreOfPermutum_DimCount_4(ObjectParameter result, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, Nullable<int> dim3_IsContinuous, Nullable<int> dim3_Cardinality, string dim3_context, Nullable<int> dim4_IsContinuous, Nullable<int> dim4_Cardinality, string dim4_context, string curr_intention, Nullable<int> curr_dim1_IsContinuous, Nullable<int> curr_dim1_Cardinality, string curr_dim1_context, Nullable<int> curr_dim2_IsContinuous, Nullable<int> curr_dim2_Cardinality, string curr_dim2_context, Nullable<int> curr_dim3_IsContinuous, Nullable<int> curr_dim3_Cardinality, string curr_dim3_context, Nullable<int> curr_dim4_IsContinuous, Nullable<int> curr_dim4_Cardinality, string curr_dim4_context)
+        {
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            var dim1_IsContinuousParameter = dim1_IsContinuous.HasValue ?
+                new ObjectParameter("dim1_IsContinuous", dim1_IsContinuous) :
+                new ObjectParameter("dim1_IsContinuous", typeof(int));
+    
+            var dim1_CardinalityParameter = dim1_Cardinality.HasValue ?
+                new ObjectParameter("dim1_Cardinality", dim1_Cardinality) :
+                new ObjectParameter("dim1_Cardinality", typeof(int));
+    
+            var dim1_contextParameter = dim1_context != null ?
+                new ObjectParameter("dim1_context", dim1_context) :
+                new ObjectParameter("dim1_context", typeof(string));
+    
+            var dim2_IsContinuousParameter = dim2_IsContinuous.HasValue ?
+                new ObjectParameter("dim2_IsContinuous", dim2_IsContinuous) :
+                new ObjectParameter("dim2_IsContinuous", typeof(int));
+    
+            var dim2_CardinalityParameter = dim2_Cardinality.HasValue ?
+                new ObjectParameter("dim2_Cardinality", dim2_Cardinality) :
+                new ObjectParameter("dim2_Cardinality", typeof(int));
+    
+            var dim2_contextParameter = dim2_context != null ?
+                new ObjectParameter("dim2_context", dim2_context) :
+                new ObjectParameter("dim2_context", typeof(string));
+    
+            var dim3_IsContinuousParameter = dim3_IsContinuous.HasValue ?
+                new ObjectParameter("dim3_IsContinuous", dim3_IsContinuous) :
+                new ObjectParameter("dim3_IsContinuous", typeof(int));
+    
+            var dim3_CardinalityParameter = dim3_Cardinality.HasValue ?
+                new ObjectParameter("dim3_Cardinality", dim3_Cardinality) :
+                new ObjectParameter("dim3_Cardinality", typeof(int));
+    
+            var dim3_contextParameter = dim3_context != null ?
+                new ObjectParameter("dim3_context", dim3_context) :
+                new ObjectParameter("dim3_context", typeof(string));
+    
+            var dim4_IsContinuousParameter = dim4_IsContinuous.HasValue ?
+                new ObjectParameter("dim4_IsContinuous", dim4_IsContinuous) :
+                new ObjectParameter("dim4_IsContinuous", typeof(int));
+    
+            var dim4_CardinalityParameter = dim4_Cardinality.HasValue ?
+                new ObjectParameter("dim4_Cardinality", dim4_Cardinality) :
+                new ObjectParameter("dim4_Cardinality", typeof(int));
+    
+            var dim4_contextParameter = dim4_context != null ?
+                new ObjectParameter("dim4_context", dim4_context) :
+                new ObjectParameter("dim4_context", typeof(string));
+    
+            var curr_intentionParameter = curr_intention != null ?
+                new ObjectParameter("Curr_intention", curr_intention) :
+                new ObjectParameter("Curr_intention", typeof(string));
+    
+            var curr_dim1_IsContinuousParameter = curr_dim1_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim1_IsContinuous", curr_dim1_IsContinuous) :
+                new ObjectParameter("Curr_dim1_IsContinuous", typeof(int));
+    
+            var curr_dim1_CardinalityParameter = curr_dim1_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim1_Cardinality", curr_dim1_Cardinality) :
+                new ObjectParameter("Curr_dim1_Cardinality", typeof(int));
+    
+            var curr_dim1_contextParameter = curr_dim1_context != null ?
+                new ObjectParameter("Curr_dim1_context", curr_dim1_context) :
+                new ObjectParameter("Curr_dim1_context", typeof(string));
+    
+            var curr_dim2_IsContinuousParameter = curr_dim2_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim2_IsContinuous", curr_dim2_IsContinuous) :
+                new ObjectParameter("Curr_dim2_IsContinuous", typeof(int));
+    
+            var curr_dim2_CardinalityParameter = curr_dim2_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim2_Cardinality", curr_dim2_Cardinality) :
+                new ObjectParameter("Curr_dim2_Cardinality", typeof(int));
+    
+            var curr_dim2_contextParameter = curr_dim2_context != null ?
+                new ObjectParameter("Curr_dim2_context", curr_dim2_context) :
+                new ObjectParameter("Curr_dim2_context", typeof(string));
+    
+            var curr_dim3_IsContinuousParameter = curr_dim3_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim3_IsContinuous", curr_dim3_IsContinuous) :
+                new ObjectParameter("Curr_dim3_IsContinuous", typeof(int));
+    
+            var curr_dim3_CardinalityParameter = curr_dim3_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim3_Cardinality", curr_dim3_Cardinality) :
+                new ObjectParameter("Curr_dim3_Cardinality", typeof(int));
+    
+            var curr_dim3_contextParameter = curr_dim3_context != null ?
+                new ObjectParameter("Curr_dim3_context", curr_dim3_context) :
+                new ObjectParameter("Curr_dim3_context", typeof(string));
+    
+            var curr_dim4_IsContinuousParameter = curr_dim4_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim4_IsContinuous", curr_dim4_IsContinuous) :
+                new ObjectParameter("Curr_dim4_IsContinuous", typeof(int));
+    
+            var curr_dim4_CardinalityParameter = curr_dim4_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim4_Cardinality", curr_dim4_Cardinality) :
+                new ObjectParameter("Curr_dim4_Cardinality", typeof(int));
+    
+            var curr_dim4_contextParameter = curr_dim4_context != null ?
+                new ObjectParameter("Curr_dim4_context", curr_dim4_context) :
+                new ObjectParameter("Curr_dim4_context", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateScoreOfPermutum_DimCount_4", result, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, dim3_IsContinuousParameter, dim3_CardinalityParameter, dim3_contextParameter, dim4_IsContinuousParameter, dim4_CardinalityParameter, dim4_contextParameter, curr_intentionParameter, curr_dim1_IsContinuousParameter, curr_dim1_CardinalityParameter, curr_dim1_contextParameter, curr_dim2_IsContinuousParameter, curr_dim2_CardinalityParameter, curr_dim2_contextParameter, curr_dim3_IsContinuousParameter, curr_dim3_CardinalityParameter, curr_dim3_contextParameter, curr_dim4_IsContinuousParameter, curr_dim4_CardinalityParameter, curr_dim4_contextParameter);
+        }
+    
+        public virtual int calculateScoreOfPermutum_DimCount_5(ObjectParameter result, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, Nullable<int> dim3_IsContinuous, Nullable<int> dim3_Cardinality, string dim3_context, Nullable<int> dim4_IsContinuous, Nullable<int> dim4_Cardinality, string dim4_context, Nullable<int> dim5_IsContinuous, Nullable<int> dim5_Cardinality, string dim5_context, string curr_intention, Nullable<int> curr_dim1_IsContinuous, Nullable<int> curr_dim1_Cardinality, string curr_dim1_context, Nullable<int> curr_dim2_IsContinuous, Nullable<int> curr_dim2_Cardinality, string curr_dim2_context, Nullable<int> curr_dim3_IsContinuous, Nullable<int> curr_dim3_Cardinality, string curr_dim3_context, Nullable<int> curr_dim4_IsContinuous, Nullable<int> curr_dim4_Cardinality, string curr_dim4_context, Nullable<int> curr_dim5_IsContinuous, Nullable<int> curr_dim5_Cardinality, string curr_dim5_context)
+        {
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            var dim1_IsContinuousParameter = dim1_IsContinuous.HasValue ?
+                new ObjectParameter("dim1_IsContinuous", dim1_IsContinuous) :
+                new ObjectParameter("dim1_IsContinuous", typeof(int));
+    
+            var dim1_CardinalityParameter = dim1_Cardinality.HasValue ?
+                new ObjectParameter("dim1_Cardinality", dim1_Cardinality) :
+                new ObjectParameter("dim1_Cardinality", typeof(int));
+    
+            var dim1_contextParameter = dim1_context != null ?
+                new ObjectParameter("dim1_context", dim1_context) :
+                new ObjectParameter("dim1_context", typeof(string));
+    
+            var dim2_IsContinuousParameter = dim2_IsContinuous.HasValue ?
+                new ObjectParameter("dim2_IsContinuous", dim2_IsContinuous) :
+                new ObjectParameter("dim2_IsContinuous", typeof(int));
+    
+            var dim2_CardinalityParameter = dim2_Cardinality.HasValue ?
+                new ObjectParameter("dim2_Cardinality", dim2_Cardinality) :
+                new ObjectParameter("dim2_Cardinality", typeof(int));
+    
+            var dim2_contextParameter = dim2_context != null ?
+                new ObjectParameter("dim2_context", dim2_context) :
+                new ObjectParameter("dim2_context", typeof(string));
+    
+            var dim3_IsContinuousParameter = dim3_IsContinuous.HasValue ?
+                new ObjectParameter("dim3_IsContinuous", dim3_IsContinuous) :
+                new ObjectParameter("dim3_IsContinuous", typeof(int));
+    
+            var dim3_CardinalityParameter = dim3_Cardinality.HasValue ?
+                new ObjectParameter("dim3_Cardinality", dim3_Cardinality) :
+                new ObjectParameter("dim3_Cardinality", typeof(int));
+    
+            var dim3_contextParameter = dim3_context != null ?
+                new ObjectParameter("dim3_context", dim3_context) :
+                new ObjectParameter("dim3_context", typeof(string));
+    
+            var dim4_IsContinuousParameter = dim4_IsContinuous.HasValue ?
+                new ObjectParameter("dim4_IsContinuous", dim4_IsContinuous) :
+                new ObjectParameter("dim4_IsContinuous", typeof(int));
+    
+            var dim4_CardinalityParameter = dim4_Cardinality.HasValue ?
+                new ObjectParameter("dim4_Cardinality", dim4_Cardinality) :
+                new ObjectParameter("dim4_Cardinality", typeof(int));
+    
+            var dim4_contextParameter = dim4_context != null ?
+                new ObjectParameter("dim4_context", dim4_context) :
+                new ObjectParameter("dim4_context", typeof(string));
+    
+            var dim5_IsContinuousParameter = dim5_IsContinuous.HasValue ?
+                new ObjectParameter("dim5_IsContinuous", dim5_IsContinuous) :
+                new ObjectParameter("dim5_IsContinuous", typeof(int));
+    
+            var dim5_CardinalityParameter = dim5_Cardinality.HasValue ?
+                new ObjectParameter("dim5_Cardinality", dim5_Cardinality) :
+                new ObjectParameter("dim5_Cardinality", typeof(int));
+    
+            var dim5_contextParameter = dim5_context != null ?
+                new ObjectParameter("dim5_context", dim5_context) :
+                new ObjectParameter("dim5_context", typeof(string));
+    
+            var curr_intentionParameter = curr_intention != null ?
+                new ObjectParameter("Curr_intention", curr_intention) :
+                new ObjectParameter("Curr_intention", typeof(string));
+    
+            var curr_dim1_IsContinuousParameter = curr_dim1_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim1_IsContinuous", curr_dim1_IsContinuous) :
+                new ObjectParameter("Curr_dim1_IsContinuous", typeof(int));
+    
+            var curr_dim1_CardinalityParameter = curr_dim1_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim1_Cardinality", curr_dim1_Cardinality) :
+                new ObjectParameter("Curr_dim1_Cardinality", typeof(int));
+    
+            var curr_dim1_contextParameter = curr_dim1_context != null ?
+                new ObjectParameter("Curr_dim1_context", curr_dim1_context) :
+                new ObjectParameter("Curr_dim1_context", typeof(string));
+    
+            var curr_dim2_IsContinuousParameter = curr_dim2_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim2_IsContinuous", curr_dim2_IsContinuous) :
+                new ObjectParameter("Curr_dim2_IsContinuous", typeof(int));
+    
+            var curr_dim2_CardinalityParameter = curr_dim2_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim2_Cardinality", curr_dim2_Cardinality) :
+                new ObjectParameter("Curr_dim2_Cardinality", typeof(int));
+    
+            var curr_dim2_contextParameter = curr_dim2_context != null ?
+                new ObjectParameter("Curr_dim2_context", curr_dim2_context) :
+                new ObjectParameter("Curr_dim2_context", typeof(string));
+    
+            var curr_dim3_IsContinuousParameter = curr_dim3_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim3_IsContinuous", curr_dim3_IsContinuous) :
+                new ObjectParameter("Curr_dim3_IsContinuous", typeof(int));
+    
+            var curr_dim3_CardinalityParameter = curr_dim3_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim3_Cardinality", curr_dim3_Cardinality) :
+                new ObjectParameter("Curr_dim3_Cardinality", typeof(int));
+    
+            var curr_dim3_contextParameter = curr_dim3_context != null ?
+                new ObjectParameter("Curr_dim3_context", curr_dim3_context) :
+                new ObjectParameter("Curr_dim3_context", typeof(string));
+    
+            var curr_dim4_IsContinuousParameter = curr_dim4_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim4_IsContinuous", curr_dim4_IsContinuous) :
+                new ObjectParameter("Curr_dim4_IsContinuous", typeof(int));
+    
+            var curr_dim4_CardinalityParameter = curr_dim4_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim4_Cardinality", curr_dim4_Cardinality) :
+                new ObjectParameter("Curr_dim4_Cardinality", typeof(int));
+    
+            var curr_dim4_contextParameter = curr_dim4_context != null ?
+                new ObjectParameter("Curr_dim4_context", curr_dim4_context) :
+                new ObjectParameter("Curr_dim4_context", typeof(string));
+    
+            var curr_dim5_IsContinuousParameter = curr_dim5_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim5_IsContinuous", curr_dim5_IsContinuous) :
+                new ObjectParameter("Curr_dim5_IsContinuous", typeof(int));
+    
+            var curr_dim5_CardinalityParameter = curr_dim5_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim5_Cardinality", curr_dim5_Cardinality) :
+                new ObjectParameter("Curr_dim5_Cardinality", typeof(int));
+    
+            var curr_dim5_contextParameter = curr_dim5_context != null ?
+                new ObjectParameter("Curr_dim5_context", curr_dim5_context) :
+                new ObjectParameter("Curr_dim5_context", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateScoreOfPermutum_DimCount_5", result, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, dim3_IsContinuousParameter, dim3_CardinalityParameter, dim3_contextParameter, dim4_IsContinuousParameter, dim4_CardinalityParameter, dim4_contextParameter, dim5_IsContinuousParameter, dim5_CardinalityParameter, dim5_contextParameter, curr_intentionParameter, curr_dim1_IsContinuousParameter, curr_dim1_CardinalityParameter, curr_dim1_contextParameter, curr_dim2_IsContinuousParameter, curr_dim2_CardinalityParameter, curr_dim2_contextParameter, curr_dim3_IsContinuousParameter, curr_dim3_CardinalityParameter, curr_dim3_contextParameter, curr_dim4_IsContinuousParameter, curr_dim4_CardinalityParameter, curr_dim4_contextParameter, curr_dim5_IsContinuousParameter, curr_dim5_CardinalityParameter, curr_dim5_contextParameter);
+        }
+    
+        public virtual int calculateScoreOfPermutum_DimCount_6(ObjectParameter result, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, Nullable<int> dim3_IsContinuous, Nullable<int> dim3_Cardinality, string dim3_context, Nullable<int> dim4_IsContinuous, Nullable<int> dim4_Cardinality, string dim4_context, Nullable<int> dim5_IsContinuous, Nullable<int> dim5_Cardinality, string dim5_context, Nullable<int> dim6_IsContinuous, Nullable<int> dim6_Cardinality, string dim6_context, string curr_intention, Nullable<int> curr_dim1_IsContinuous, Nullable<int> curr_dim1_Cardinality, string curr_dim1_context, Nullable<int> curr_dim2_IsContinuous, Nullable<int> curr_dim2_Cardinality, string curr_dim2_context, Nullable<int> curr_dim3_IsContinuous, Nullable<int> curr_dim3_Cardinality, string curr_dim3_context, Nullable<int> curr_dim4_IsContinuous, Nullable<int> curr_dim4_Cardinality, string curr_dim4_context, Nullable<int> curr_dim5_IsContinuous, Nullable<int> curr_dim5_Cardinality, string curr_dim5_context, Nullable<int> curr_dim6_IsContinuous, Nullable<int> curr_dim6_Cardinality, string curr_dim6_context)
+        {
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            var dim1_IsContinuousParameter = dim1_IsContinuous.HasValue ?
+                new ObjectParameter("dim1_IsContinuous", dim1_IsContinuous) :
+                new ObjectParameter("dim1_IsContinuous", typeof(int));
+    
+            var dim1_CardinalityParameter = dim1_Cardinality.HasValue ?
+                new ObjectParameter("dim1_Cardinality", dim1_Cardinality) :
+                new ObjectParameter("dim1_Cardinality", typeof(int));
+    
+            var dim1_contextParameter = dim1_context != null ?
+                new ObjectParameter("dim1_context", dim1_context) :
+                new ObjectParameter("dim1_context", typeof(string));
+    
+            var dim2_IsContinuousParameter = dim2_IsContinuous.HasValue ?
+                new ObjectParameter("dim2_IsContinuous", dim2_IsContinuous) :
+                new ObjectParameter("dim2_IsContinuous", typeof(int));
+    
+            var dim2_CardinalityParameter = dim2_Cardinality.HasValue ?
+                new ObjectParameter("dim2_Cardinality", dim2_Cardinality) :
+                new ObjectParameter("dim2_Cardinality", typeof(int));
+    
+            var dim2_contextParameter = dim2_context != null ?
+                new ObjectParameter("dim2_context", dim2_context) :
+                new ObjectParameter("dim2_context", typeof(string));
+    
+            var dim3_IsContinuousParameter = dim3_IsContinuous.HasValue ?
+                new ObjectParameter("dim3_IsContinuous", dim3_IsContinuous) :
+                new ObjectParameter("dim3_IsContinuous", typeof(int));
+    
+            var dim3_CardinalityParameter = dim3_Cardinality.HasValue ?
+                new ObjectParameter("dim3_Cardinality", dim3_Cardinality) :
+                new ObjectParameter("dim3_Cardinality", typeof(int));
+    
+            var dim3_contextParameter = dim3_context != null ?
+                new ObjectParameter("dim3_context", dim3_context) :
+                new ObjectParameter("dim3_context", typeof(string));
+    
+            var dim4_IsContinuousParameter = dim4_IsContinuous.HasValue ?
+                new ObjectParameter("dim4_IsContinuous", dim4_IsContinuous) :
+                new ObjectParameter("dim4_IsContinuous", typeof(int));
+    
+            var dim4_CardinalityParameter = dim4_Cardinality.HasValue ?
+                new ObjectParameter("dim4_Cardinality", dim4_Cardinality) :
+                new ObjectParameter("dim4_Cardinality", typeof(int));
+    
+            var dim4_contextParameter = dim4_context != null ?
+                new ObjectParameter("dim4_context", dim4_context) :
+                new ObjectParameter("dim4_context", typeof(string));
+    
+            var dim5_IsContinuousParameter = dim5_IsContinuous.HasValue ?
+                new ObjectParameter("dim5_IsContinuous", dim5_IsContinuous) :
+                new ObjectParameter("dim5_IsContinuous", typeof(int));
+    
+            var dim5_CardinalityParameter = dim5_Cardinality.HasValue ?
+                new ObjectParameter("dim5_Cardinality", dim5_Cardinality) :
+                new ObjectParameter("dim5_Cardinality", typeof(int));
+    
+            var dim5_contextParameter = dim5_context != null ?
+                new ObjectParameter("dim5_context", dim5_context) :
+                new ObjectParameter("dim5_context", typeof(string));
+    
+            var dim6_IsContinuousParameter = dim6_IsContinuous.HasValue ?
+                new ObjectParameter("dim6_IsContinuous", dim6_IsContinuous) :
+                new ObjectParameter("dim6_IsContinuous", typeof(int));
+    
+            var dim6_CardinalityParameter = dim6_Cardinality.HasValue ?
+                new ObjectParameter("dim6_Cardinality", dim6_Cardinality) :
+                new ObjectParameter("dim6_Cardinality", typeof(int));
+    
+            var dim6_contextParameter = dim6_context != null ?
+                new ObjectParameter("dim6_context", dim6_context) :
+                new ObjectParameter("dim6_context", typeof(string));
+    
+            var curr_intentionParameter = curr_intention != null ?
+                new ObjectParameter("Curr_intention", curr_intention) :
+                new ObjectParameter("Curr_intention", typeof(string));
+    
+            var curr_dim1_IsContinuousParameter = curr_dim1_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim1_IsContinuous", curr_dim1_IsContinuous) :
+                new ObjectParameter("Curr_dim1_IsContinuous", typeof(int));
+    
+            var curr_dim1_CardinalityParameter = curr_dim1_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim1_Cardinality", curr_dim1_Cardinality) :
+                new ObjectParameter("Curr_dim1_Cardinality", typeof(int));
+    
+            var curr_dim1_contextParameter = curr_dim1_context != null ?
+                new ObjectParameter("Curr_dim1_context", curr_dim1_context) :
+                new ObjectParameter("Curr_dim1_context", typeof(string));
+    
+            var curr_dim2_IsContinuousParameter = curr_dim2_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim2_IsContinuous", curr_dim2_IsContinuous) :
+                new ObjectParameter("Curr_dim2_IsContinuous", typeof(int));
+    
+            var curr_dim2_CardinalityParameter = curr_dim2_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim2_Cardinality", curr_dim2_Cardinality) :
+                new ObjectParameter("Curr_dim2_Cardinality", typeof(int));
+    
+            var curr_dim2_contextParameter = curr_dim2_context != null ?
+                new ObjectParameter("Curr_dim2_context", curr_dim2_context) :
+                new ObjectParameter("Curr_dim2_context", typeof(string));
+    
+            var curr_dim3_IsContinuousParameter = curr_dim3_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim3_IsContinuous", curr_dim3_IsContinuous) :
+                new ObjectParameter("Curr_dim3_IsContinuous", typeof(int));
+    
+            var curr_dim3_CardinalityParameter = curr_dim3_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim3_Cardinality", curr_dim3_Cardinality) :
+                new ObjectParameter("Curr_dim3_Cardinality", typeof(int));
+    
+            var curr_dim3_contextParameter = curr_dim3_context != null ?
+                new ObjectParameter("Curr_dim3_context", curr_dim3_context) :
+                new ObjectParameter("Curr_dim3_context", typeof(string));
+    
+            var curr_dim4_IsContinuousParameter = curr_dim4_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim4_IsContinuous", curr_dim4_IsContinuous) :
+                new ObjectParameter("Curr_dim4_IsContinuous", typeof(int));
+    
+            var curr_dim4_CardinalityParameter = curr_dim4_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim4_Cardinality", curr_dim4_Cardinality) :
+                new ObjectParameter("Curr_dim4_Cardinality", typeof(int));
+    
+            var curr_dim4_contextParameter = curr_dim4_context != null ?
+                new ObjectParameter("Curr_dim4_context", curr_dim4_context) :
+                new ObjectParameter("Curr_dim4_context", typeof(string));
+    
+            var curr_dim5_IsContinuousParameter = curr_dim5_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim5_IsContinuous", curr_dim5_IsContinuous) :
+                new ObjectParameter("Curr_dim5_IsContinuous", typeof(int));
+    
+            var curr_dim5_CardinalityParameter = curr_dim5_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim5_Cardinality", curr_dim5_Cardinality) :
+                new ObjectParameter("Curr_dim5_Cardinality", typeof(int));
+    
+            var curr_dim5_contextParameter = curr_dim5_context != null ?
+                new ObjectParameter("Curr_dim5_context", curr_dim5_context) :
+                new ObjectParameter("Curr_dim5_context", typeof(string));
+    
+            var curr_dim6_IsContinuousParameter = curr_dim6_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim6_IsContinuous", curr_dim6_IsContinuous) :
+                new ObjectParameter("Curr_dim6_IsContinuous", typeof(int));
+    
+            var curr_dim6_CardinalityParameter = curr_dim6_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim6_Cardinality", curr_dim6_Cardinality) :
+                new ObjectParameter("Curr_dim6_Cardinality", typeof(int));
+    
+            var curr_dim6_contextParameter = curr_dim6_context != null ?
+                new ObjectParameter("Curr_dim6_context", curr_dim6_context) :
+                new ObjectParameter("Curr_dim6_context", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateScoreOfPermutum_DimCount_6", result, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, dim3_IsContinuousParameter, dim3_CardinalityParameter, dim3_contextParameter, dim4_IsContinuousParameter, dim4_CardinalityParameter, dim4_contextParameter, dim5_IsContinuousParameter, dim5_CardinalityParameter, dim5_contextParameter, dim6_IsContinuousParameter, dim6_CardinalityParameter, dim6_contextParameter, curr_intentionParameter, curr_dim1_IsContinuousParameter, curr_dim1_CardinalityParameter, curr_dim1_contextParameter, curr_dim2_IsContinuousParameter, curr_dim2_CardinalityParameter, curr_dim2_contextParameter, curr_dim3_IsContinuousParameter, curr_dim3_CardinalityParameter, curr_dim3_contextParameter, curr_dim4_IsContinuousParameter, curr_dim4_CardinalityParameter, curr_dim4_contextParameter, curr_dim5_IsContinuousParameter, curr_dim5_CardinalityParameter, curr_dim5_contextParameter, curr_dim6_IsContinuousParameter, curr_dim6_CardinalityParameter, curr_dim6_contextParameter);
+        }
+    
+        public virtual int calculateScoreOfPermutum_DimCount_7(ObjectParameter result, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, Nullable<int> dim3_IsContinuous, Nullable<int> dim3_Cardinality, string dim3_context, Nullable<int> dim4_IsContinuous, Nullable<int> dim4_Cardinality, string dim4_context, Nullable<int> dim5_IsContinuous, Nullable<int> dim5_Cardinality, string dim5_context, Nullable<int> dim6_IsContinuous, Nullable<int> dim6_Cardinality, string dim6_context, Nullable<int> dim7_IsContinuous, Nullable<int> dim7_Cardinality, string dim7_context, string curr_intention, Nullable<int> curr_dim1_IsContinuous, Nullable<int> curr_dim1_Cardinality, string curr_dim1_context, Nullable<int> curr_dim2_IsContinuous, Nullable<int> curr_dim2_Cardinality, string curr_dim2_context, Nullable<int> curr_dim3_IsContinuous, Nullable<int> curr_dim3_Cardinality, string curr_dim3_context, Nullable<int> curr_dim4_IsContinuous, Nullable<int> curr_dim4_Cardinality, string curr_dim4_context, Nullable<int> curr_dim5_IsContinuous, Nullable<int> curr_dim5_Cardinality, string curr_dim5_context, Nullable<int> curr_dim6_IsContinuous, Nullable<int> curr_dim6_Cardinality, string curr_dim6_context, Nullable<int> curr_dim7_IsContinuous, Nullable<int> curr_dim7_Cardinality, string curr_dim7_context)
+        {
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            var dim1_IsContinuousParameter = dim1_IsContinuous.HasValue ?
+                new ObjectParameter("dim1_IsContinuous", dim1_IsContinuous) :
+                new ObjectParameter("dim1_IsContinuous", typeof(int));
+    
+            var dim1_CardinalityParameter = dim1_Cardinality.HasValue ?
+                new ObjectParameter("dim1_Cardinality", dim1_Cardinality) :
+                new ObjectParameter("dim1_Cardinality", typeof(int));
+    
+            var dim1_contextParameter = dim1_context != null ?
+                new ObjectParameter("dim1_context", dim1_context) :
+                new ObjectParameter("dim1_context", typeof(string));
+    
+            var dim2_IsContinuousParameter = dim2_IsContinuous.HasValue ?
+                new ObjectParameter("dim2_IsContinuous", dim2_IsContinuous) :
+                new ObjectParameter("dim2_IsContinuous", typeof(int));
+    
+            var dim2_CardinalityParameter = dim2_Cardinality.HasValue ?
+                new ObjectParameter("dim2_Cardinality", dim2_Cardinality) :
+                new ObjectParameter("dim2_Cardinality", typeof(int));
+    
+            var dim2_contextParameter = dim2_context != null ?
+                new ObjectParameter("dim2_context", dim2_context) :
+                new ObjectParameter("dim2_context", typeof(string));
+    
+            var dim3_IsContinuousParameter = dim3_IsContinuous.HasValue ?
+                new ObjectParameter("dim3_IsContinuous", dim3_IsContinuous) :
+                new ObjectParameter("dim3_IsContinuous", typeof(int));
+    
+            var dim3_CardinalityParameter = dim3_Cardinality.HasValue ?
+                new ObjectParameter("dim3_Cardinality", dim3_Cardinality) :
+                new ObjectParameter("dim3_Cardinality", typeof(int));
+    
+            var dim3_contextParameter = dim3_context != null ?
+                new ObjectParameter("dim3_context", dim3_context) :
+                new ObjectParameter("dim3_context", typeof(string));
+    
+            var dim4_IsContinuousParameter = dim4_IsContinuous.HasValue ?
+                new ObjectParameter("dim4_IsContinuous", dim4_IsContinuous) :
+                new ObjectParameter("dim4_IsContinuous", typeof(int));
+    
+            var dim4_CardinalityParameter = dim4_Cardinality.HasValue ?
+                new ObjectParameter("dim4_Cardinality", dim4_Cardinality) :
+                new ObjectParameter("dim4_Cardinality", typeof(int));
+    
+            var dim4_contextParameter = dim4_context != null ?
+                new ObjectParameter("dim4_context", dim4_context) :
+                new ObjectParameter("dim4_context", typeof(string));
+    
+            var dim5_IsContinuousParameter = dim5_IsContinuous.HasValue ?
+                new ObjectParameter("dim5_IsContinuous", dim5_IsContinuous) :
+                new ObjectParameter("dim5_IsContinuous", typeof(int));
+    
+            var dim5_CardinalityParameter = dim5_Cardinality.HasValue ?
+                new ObjectParameter("dim5_Cardinality", dim5_Cardinality) :
+                new ObjectParameter("dim5_Cardinality", typeof(int));
+    
+            var dim5_contextParameter = dim5_context != null ?
+                new ObjectParameter("dim5_context", dim5_context) :
+                new ObjectParameter("dim5_context", typeof(string));
+    
+            var dim6_IsContinuousParameter = dim6_IsContinuous.HasValue ?
+                new ObjectParameter("dim6_IsContinuous", dim6_IsContinuous) :
+                new ObjectParameter("dim6_IsContinuous", typeof(int));
+    
+            var dim6_CardinalityParameter = dim6_Cardinality.HasValue ?
+                new ObjectParameter("dim6_Cardinality", dim6_Cardinality) :
+                new ObjectParameter("dim6_Cardinality", typeof(int));
+    
+            var dim6_contextParameter = dim6_context != null ?
+                new ObjectParameter("dim6_context", dim6_context) :
+                new ObjectParameter("dim6_context", typeof(string));
+    
+            var dim7_IsContinuousParameter = dim7_IsContinuous.HasValue ?
+                new ObjectParameter("dim7_IsContinuous", dim7_IsContinuous) :
+                new ObjectParameter("dim7_IsContinuous", typeof(int));
+    
+            var dim7_CardinalityParameter = dim7_Cardinality.HasValue ?
+                new ObjectParameter("dim7_Cardinality", dim7_Cardinality) :
+                new ObjectParameter("dim7_Cardinality", typeof(int));
+    
+            var dim7_contextParameter = dim7_context != null ?
+                new ObjectParameter("dim7_context", dim7_context) :
+                new ObjectParameter("dim7_context", typeof(string));
+    
+            var curr_intentionParameter = curr_intention != null ?
+                new ObjectParameter("Curr_intention", curr_intention) :
+                new ObjectParameter("Curr_intention", typeof(string));
+    
+            var curr_dim1_IsContinuousParameter = curr_dim1_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim1_IsContinuous", curr_dim1_IsContinuous) :
+                new ObjectParameter("Curr_dim1_IsContinuous", typeof(int));
+    
+            var curr_dim1_CardinalityParameter = curr_dim1_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim1_Cardinality", curr_dim1_Cardinality) :
+                new ObjectParameter("Curr_dim1_Cardinality", typeof(int));
+    
+            var curr_dim1_contextParameter = curr_dim1_context != null ?
+                new ObjectParameter("Curr_dim1_context", curr_dim1_context) :
+                new ObjectParameter("Curr_dim1_context", typeof(string));
+    
+            var curr_dim2_IsContinuousParameter = curr_dim2_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim2_IsContinuous", curr_dim2_IsContinuous) :
+                new ObjectParameter("Curr_dim2_IsContinuous", typeof(int));
+    
+            var curr_dim2_CardinalityParameter = curr_dim2_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim2_Cardinality", curr_dim2_Cardinality) :
+                new ObjectParameter("Curr_dim2_Cardinality", typeof(int));
+    
+            var curr_dim2_contextParameter = curr_dim2_context != null ?
+                new ObjectParameter("Curr_dim2_context", curr_dim2_context) :
+                new ObjectParameter("Curr_dim2_context", typeof(string));
+    
+            var curr_dim3_IsContinuousParameter = curr_dim3_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim3_IsContinuous", curr_dim3_IsContinuous) :
+                new ObjectParameter("Curr_dim3_IsContinuous", typeof(int));
+    
+            var curr_dim3_CardinalityParameter = curr_dim3_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim3_Cardinality", curr_dim3_Cardinality) :
+                new ObjectParameter("Curr_dim3_Cardinality", typeof(int));
+    
+            var curr_dim3_contextParameter = curr_dim3_context != null ?
+                new ObjectParameter("Curr_dim3_context", curr_dim3_context) :
+                new ObjectParameter("Curr_dim3_context", typeof(string));
+    
+            var curr_dim4_IsContinuousParameter = curr_dim4_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim4_IsContinuous", curr_dim4_IsContinuous) :
+                new ObjectParameter("Curr_dim4_IsContinuous", typeof(int));
+    
+            var curr_dim4_CardinalityParameter = curr_dim4_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim4_Cardinality", curr_dim4_Cardinality) :
+                new ObjectParameter("Curr_dim4_Cardinality", typeof(int));
+    
+            var curr_dim4_contextParameter = curr_dim4_context != null ?
+                new ObjectParameter("Curr_dim4_context", curr_dim4_context) :
+                new ObjectParameter("Curr_dim4_context", typeof(string));
+    
+            var curr_dim5_IsContinuousParameter = curr_dim5_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim5_IsContinuous", curr_dim5_IsContinuous) :
+                new ObjectParameter("Curr_dim5_IsContinuous", typeof(int));
+    
+            var curr_dim5_CardinalityParameter = curr_dim5_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim5_Cardinality", curr_dim5_Cardinality) :
+                new ObjectParameter("Curr_dim5_Cardinality", typeof(int));
+    
+            var curr_dim5_contextParameter = curr_dim5_context != null ?
+                new ObjectParameter("Curr_dim5_context", curr_dim5_context) :
+                new ObjectParameter("Curr_dim5_context", typeof(string));
+    
+            var curr_dim6_IsContinuousParameter = curr_dim6_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim6_IsContinuous", curr_dim6_IsContinuous) :
+                new ObjectParameter("Curr_dim6_IsContinuous", typeof(int));
+    
+            var curr_dim6_CardinalityParameter = curr_dim6_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim6_Cardinality", curr_dim6_Cardinality) :
+                new ObjectParameter("Curr_dim6_Cardinality", typeof(int));
+    
+            var curr_dim6_contextParameter = curr_dim6_context != null ?
+                new ObjectParameter("Curr_dim6_context", curr_dim6_context) :
+                new ObjectParameter("Curr_dim6_context", typeof(string));
+    
+            var curr_dim7_IsContinuousParameter = curr_dim7_IsContinuous.HasValue ?
+                new ObjectParameter("Curr_dim7_IsContinuous", curr_dim7_IsContinuous) :
+                new ObjectParameter("Curr_dim7_IsContinuous", typeof(int));
+    
+            var curr_dim7_CardinalityParameter = curr_dim7_Cardinality.HasValue ?
+                new ObjectParameter("Curr_dim7_Cardinality", curr_dim7_Cardinality) :
+                new ObjectParameter("Curr_dim7_Cardinality", typeof(int));
+    
+            var curr_dim7_contextParameter = curr_dim7_context != null ?
+                new ObjectParameter("Curr_dim7_context", curr_dim7_context) :
+                new ObjectParameter("Curr_dim7_context", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateScoreOfPermutum_DimCount_7", result, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, dim3_IsContinuousParameter, dim3_CardinalityParameter, dim3_contextParameter, dim4_IsContinuousParameter, dim4_CardinalityParameter, dim4_contextParameter, dim5_IsContinuousParameter, dim5_CardinalityParameter, dim5_contextParameter, dim6_IsContinuousParameter, dim6_CardinalityParameter, dim6_contextParameter, dim7_IsContinuousParameter, dim7_CardinalityParameter, dim7_contextParameter, curr_intentionParameter, curr_dim1_IsContinuousParameter, curr_dim1_CardinalityParameter, curr_dim1_contextParameter, curr_dim2_IsContinuousParameter, curr_dim2_CardinalityParameter, curr_dim2_contextParameter, curr_dim3_IsContinuousParameter, curr_dim3_CardinalityParameter, curr_dim3_contextParameter, curr_dim4_IsContinuousParameter, curr_dim4_CardinalityParameter, curr_dim4_contextParameter, curr_dim5_IsContinuousParameter, curr_dim5_CardinalityParameter, curr_dim5_contextParameter, curr_dim6_IsContinuousParameter, curr_dim6_CardinalityParameter, curr_dim6_contextParameter, curr_dim7_IsContinuousParameter, curr_dim7_CardinalityParameter, curr_dim7_contextParameter);
         }
     
         public virtual int calculateScoreOfPermutumVersion2(ObjectParameter result, string intention, Nullable<int> dim1_IsContinuous, Nullable<int> dim1_Cardinality, string dim1_context, Nullable<int> dim2_IsContinuous, Nullable<int> dim2_Cardinality, string dim2_context, Nullable<int> dim3_IsContinuous, Nullable<int> dim3_Cardinality, string dim3_context, string curr_intention, Nullable<int> curr_dim1_IsContinuous, Nullable<int> curr_dim1_Cardinality, string curr_dim1_context, Nullable<int> curr_dim2_IsContinuous, Nullable<int> curr_dim2_Cardinality, string curr_dim2_context, Nullable<int> curr_dim3_IsContinuous, Nullable<int> curr_dim3_Cardinality, string curr_dim3_context)
@@ -225,9 +968,17 @@ namespace FYP_MVC.Models.DAO
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calculateScoreOfPermutumVersion2", result, intentionParameter, dim1_IsContinuousParameter, dim1_CardinalityParameter, dim1_contextParameter, dim2_IsContinuousParameter, dim2_CardinalityParameter, dim2_contextParameter, dim3_IsContinuousParameter, dim3_CardinalityParameter, dim3_contextParameter, curr_intentionParameter, curr_dim1_IsContinuousParameter, curr_dim1_CardinalityParameter, curr_dim1_contextParameter, curr_dim2_IsContinuousParameter, curr_dim2_CardinalityParameter, curr_dim2_contextParameter, curr_dim3_IsContinuousParameter, curr_dim3_CardinalityParameter, curr_dim3_contextParameter);
         }
     
-        public virtual ObjectResult<readResults_Result> readResults()
+        public virtual int getRecommendationFromRules(Nullable<int> tableID, string intention)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<readResults_Result>("readResults");
+            var tableIDParameter = tableID.HasValue ?
+                new ObjectParameter("tableID", tableID) :
+                new ObjectParameter("tableID", typeof(int));
+    
+            var intentionParameter = intention != null ?
+                new ObjectParameter("intention", intention) :
+                new ObjectParameter("intention", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getRecommendationFromRules", tableIDParameter, intentionParameter);
         }
     }
 }

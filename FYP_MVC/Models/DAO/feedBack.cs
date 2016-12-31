@@ -34,6 +34,12 @@ namespace FYP_MVC.Models.DAO
         public Nullable<int> dim5_IsContinuous { get; set; }
         public Nullable<int> dim5_Cardinality { get; set; }
         public string dim5_context { get; set; }
+        public Nullable<int> dim6_IsContinuous { get; set; }
+        public Nullable<int> dim6_Cardinality { get; set; }
+        public string dim6_context { get; set; }
+        public Nullable<int> dim7_IsContinuous { get; set; }
+        public Nullable<int> dim7_Cardinality { get; set; }
+        public string dim7_context { get; set; }
         public string recommendation { get; set; }
         public Nullable<int> rating { get; set; }
     

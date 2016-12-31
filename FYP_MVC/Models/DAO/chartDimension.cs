@@ -22,7 +22,7 @@ namespace FYP_MVC.Models.DAO
         }
     
         public int ID { get; set; }
-        public Nullable<int> cahrtID { get; set; }
+        public Nullable<int> chartID { get; set; }
         public Nullable<int> dimensionIndex { get; set; }
         public Nullable<int> isContinuous { get; set; }
     

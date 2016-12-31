@@ -12,12 +12,15 @@ namespace FYP_MVC.Models.DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class dimensionCount
+    public partial class chartRuleBase_View
     {
         public int ID { get; set; }
-        public Nullable<int> chartID { get; set; }
+        public string name { get; set; }
         public Nullable<int> count { get; set; }
-    
-        public virtual chart chart { get; set; }
+        public Nullable<int> dimensionIndex { get; set; }
+        public Nullable<int> isContinuous { get; set; }
+        public string context { get; set; }
+        public string cardinality { get; set; }
+        public string intention { get; set; }
     }
 }
